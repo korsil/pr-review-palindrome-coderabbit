@@ -10,7 +10,8 @@ def clean_word(word: str) -> str:
     # Remove punctuation and numbers
     return "".join(c for c in word if c.isalpha())
 
-def find_palindromes(filename):
+-def find_palindromes(filename):
++def find_palindromes(filename: str) -> None:
     palindromes = set()
     with open(filename) as f:
         for line in f:
