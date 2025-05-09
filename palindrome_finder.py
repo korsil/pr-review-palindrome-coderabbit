@@ -13,7 +13,7 @@ def clean_word(word):
 
 def find_palindromes(filename):
     palindromes = set()
-    with open(filename, "r") as f:
+    with open(filename) as f:
         for line in f:
             for word in line.split():
                 clean = clean_word(word.lower())
