@@ -6,10 +6,9 @@ def is_palindrome(word):
     return word == word[::-1]
 
 
-def clean_word(word):
+def clean_word(word: str) -> str:
     # Remove punctuation and numbers
     return "".join(c for c in word if c.isalpha())
-
 
 def find_palindromes(filename):
     palindromes = set()
