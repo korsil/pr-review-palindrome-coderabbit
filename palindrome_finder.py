@@ -13,12 +13,22 @@ def clean_word(word: str) -> str:
 
 def find_palindromes(filename: str) -> None:
     palindromes = set()
-    with open(filename) as f:
-        for line in f:
-            for word in line.split():
-                clean = clean_word(word.lower())
-                if len(clean) > 1 and is_palindrome(clean):
-                    palindromes.add(clean)
+    try:
+        with open(filename) as f:
+            for line in f:
+                for word in line.split():
+                    clean = clean_word(word.lower())
+                    if len(clean) > 1 and is_palindrome(clean):
+                        palindromes.add(clean)
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
+        return
+    except PermissionError:
+        print(f"Error: Permission denied to read file '{filename}'.")
+        return
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return
     for p in palindromes:
         print(p)
 
