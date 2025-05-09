@@ -17,7 +17,7 @@ def find_palindromes(filename):
         for line in f:
             for word in line.split():
                 clean = clean_word(word.lower())
-                if len(clean) > 1 and is_palindrome(word):
+                if len(clean) > 1 and is_palindrome(clean):
                     palindromes.add(clean)
     for p in palindromes:
         print(p)
