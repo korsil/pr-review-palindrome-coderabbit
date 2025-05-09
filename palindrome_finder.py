@@ -6,14 +6,19 @@ def is_palindrome(word):
     return word == word[::-1]
 
 
+def clean_word(word):
+    # Remove punctuation and numbers
+    return "".join(c for c in word if c.isalpha())
+
+
 def find_palindromes(filename):
     palindromes = set()
     with open(filename, "r") as f:
         for line in f:
-            for word in re.findall(r"\b\w+\b", line):
-                word = word.lower()
-                if len(word) > 1 and is_palindrome(word):
-                    palindromes.add(word)
+            for word in line.split():
+                clean = clean_word(word.lower())
+                if len(clean) > 1 and is_palindrome(word):
+                    palindromes.add(clean)
     for p in palindromes:
         print(p)
 
